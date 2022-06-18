@@ -1,30 +1,21 @@
 import { useState } from "react";
 
-const AddCategory = ({ categories, setCategories }) => {
+const AddCategory = ({ onNewCategory }) => {
 
     const [inputValue, setInputValue] = useState('');
 
-    const onInputChange = (event) => {
-        setInputValue(event.target.value);
+    const onInputChange = ({target}) => {
+        setInputValue(target.value);
     };
 
     const onSubmit = (event) => {
         event.preventDefault();
-
-        if (inputValue.trim() === '') {
-            return;
-        };
-
-        if (inputValue === '') {
-            return;
-        }
-
-        if (categories.includes(inputValue)) {
-            return;
-        };
-
-        setCategories([inputValue, ...categories]);
-
+        
+        const newInputValue = inputValue.trim();
+        
+        if (newInputValue.length === 0) return;
+        
+        onNewCategory(newInputValue);
         setInputValue('');
 
     };
@@ -32,7 +23,6 @@ const AddCategory = ({ categories, setCategories }) => {
     return (
         <form onSubmit={onSubmit}>
             <input
-                id="input-category"
                 type="text"
                 placeholder="Category..."
                 value={inputValue}
