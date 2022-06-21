@@ -4,17 +4,17 @@ const AddCategory = ({ onNewCategory }) => {
 
     const [inputValue, setInputValue] = useState('');
 
-    const onInputChange = ({target}) => {
+    const onInputChange = ({ target }) => {
         setInputValue(target.value);
     };
 
     const onSubmit = (event) => {
         event.preventDefault();
-        
+
         const newInputValue = inputValue.trim();
-        
+
         if (newInputValue.length === 0) return;
-        
+
         onNewCategory(newInputValue);
         setInputValue('');
 
@@ -32,4 +32,4 @@ const AddCategory = ({ onNewCategory }) => {
     )
 };
 
-export default AddCategory;
+export { AddCategory };
