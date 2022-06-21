@@ -1,0 +1,5 @@
+[[redirects]]
+from = "https://warm-alfajores-8b1488.netlify.app/api.giphy.com/*"
+to = "https://api.giphy.com/:splat"
+status = 200
+force = true
